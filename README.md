@@ -7,7 +7,7 @@ Welcome to my GitHub profile! I'm a passionate developer with a keen interest in
 - 🌱 I’m currently learning advanced algorithms and data structures.
 - 👯 I’m looking to collaborate on open source projects.
 - 💬 Ask me about Python, JavaScript, and web development.
-- 📫 How to reach me: [devravi@example.com](mailto:devravi@example.com)
+- 📫 How to reach me: [developerravi8@gmail.com](mailto:developerravi8@gmail.com)
 - ⚡ Fun fact: I love solving puzzles and playing chess in my free time.
 
 ## My Skills
