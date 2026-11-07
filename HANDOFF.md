@@ -1,8 +1,8 @@
 # Handoff
 
-- **Goal:** Keep Ravi's GitHub profile README aligned with his portfolio and showcase Arcvelt with verified project details.
-- **Done:** Updated the portfolio badges to `https://portfolio.ayraverse.com/`, added an Arcvelt feature with desktop/mobile screenshots and confirmed stack, and added Android Studio, Flutter, JavaScript, HTML, CSS, cPanel, and Hostinger to the skills display. Static image references were checked.
-- **Remaining:** The contribution snake image is published by the existing GitHub Actions workflow after the first successful run on GitHub.
-- **Key decisions:** Arcvelt is described as a Windows command center for coding agents using its public site and local source stack; screenshots come from its live site with the temporary promo dismissed.
-- **Files touched:** `README.md`, `HANDOFF.md`, `assets/projects/arcvelt-hero-desktop.webp`, `assets/projects/arcvelt-hero-mobile.webp`.
-- **Next step:** Review the updated profile on GitHub after committing and pushing these changes.
+- **Goal:** Keep Ravi's GitHub profile README accurate and make its contribution visuals render reliably.
+- **Done:** Replaced the disabled Vercel activity graph embed with generated 30-, 90-, and 365-day SVG charts. The existing GitHub Actions workflow now generates charts alongside the contribution snake and publishes both to the `output` branch. The README displays the 365-day chart and links to each range.
+- **Remaining:** The workflow must complete successfully once on GitHub before the new SVG links render. The existing snake asset is also published by that workflow.
+- **Key decisions:** Use a static, repository-hosted SVG rather than a live chart service so README rendering does not depend on the disabled Vercel deployment. Keep the existing publishing branch and workflow.
+- **Files touched:** `README.md`, `.github/workflows/contribution-snake.yml`, `HANDOFF.md`.
+- **Next step:** Review the diff, commit the three scoped files, push `main`, then confirm the workflow publishes the chart assets.

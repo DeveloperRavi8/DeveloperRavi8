@@ -172,8 +172,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ashutosh00710/github-readme-activity-graph"><img src="https://github-readme-activity-graph.vercel.app/graph?username=DeveloperRavi8&theme=tokyo-night&hide_border=true&area=true" alt="GitHub contribution activity graph" width="95%" /></a>
+  <a href="https://github.com/DeveloperRavi8/DeveloperRavi8/tree/output/activity">
+    <img src="https://raw.githubusercontent.com/DeveloperRavi8/DeveloperRavi8/output/activity/activity-365d.svg" alt="GitHub contribution activity over the last 365 days" width="95%" />
+  </a>
 </p>
+
+<p align="center"><sub><a href="https://raw.githubusercontent.com/DeveloperRavi8/DeveloperRavi8/output/activity/activity-30d.svg">30 days</a> · <a href="https://raw.githubusercontent.com/DeveloperRavi8/DeveloperRavi8/output/activity/activity-90d.svg">90 days</a> · <a href="https://raw.githubusercontent.com/DeveloperRavi8/DeveloperRavi8/output/activity/activity-365d.svg">365 days</a></sub></p>
 
 <p align="center"><sub>Stats reflect GitHub activity visible to these services; they don't represent every project or client contribution.</sub></p>
 

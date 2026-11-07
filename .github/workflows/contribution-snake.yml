@@ -16,6 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Generate contribution activity charts
+        uses: dturovskiy/deus-commit-chart@v1.5.3
+        with:
+          source: github
+          username: ${{ github.repository_owner }}
+          token: ${{ github.token }}
+          default-days: '365'
+          ranges: '30,90,365'
+          theme: github-compact
+          layout: spacious
+          hide-border: true
+          output-dir: dist/activity
+
       - name: Generate the contribution snake
         uses: Platane/snk@v3
         with:
