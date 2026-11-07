@@ -11,7 +11,7 @@
 
 <h1>やあ! I'm Ravi Kushwaha <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30" alt="Waving hand" /></h1>
 
-<a href="https://ravikushwaha.dev"><img src="https://img.shields.io/badge/PORTFOLIO-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+<a href="https://portfolio.ayraverse.com/"><img src="https://img.shields.io/badge/PORTFOLIO-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
 <a href="https://x.com/DevRaviK"><img src="https://img.shields.io/badge/FOLLOW-DevRaviK-111827?style=for-the-badge&logo=x&logoColor=white" alt="Follow Ravi on X" /></a>
 <a href="mailto:developerravi8@gmail.com"><img src="https://img.shields.io/badge/EMAIL-SAY_HELLO-EC4899?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Ravi" /></a>
 <img src="https://komarev.com/ghpvc/?username=DeveloperRavi8&style=for-the-badge&color=7C3AED&label=PROFILE+VISITORS" alt="Profile visitors" />
@@ -35,15 +35,18 @@
 <details>
 <summary>🎮 Open character loadout</summary>
 
-**Mobile:** Kotlin, Java, Jetpack Compose, Android Views, Capacitor, custom native plugins<br />
-**Web & backend:** Node.js, Express, React, Next.js, Vite, PostgreSQL, MySQL, Redis, Bull queues, Drizzle ORM, PHP<br />
+**Mobile:** Kotlin, Java, Android Studio, Jetpack Compose, Android Views, Capacitor, Flutter, custom native plugins<br />
+**Web & backend:** JavaScript, HTML, CSS, Node.js, Express, React, Next.js, Vite, PostgreSQL, MySQL, Redis, Bull queues, Drizzle ORM, PHP<br />
 **AI & ML:** Python ML pipelines, LLM apps and agents, RAG / Qdrant, speech STT/TTS, GPT-SoVITS voice cloning, MCP servers<br />
-**Infra:** AWS EC2, VPS, Docker, Dokploy, Traefik, Nginx, cPanel, Webmin, Sentry, PostHog
+**Infra:** AWS EC2, VPS, Docker, Dokploy, Traefik, Nginx, cPanel, Hostinger, Webmin, Sentry, PostHog
 
 </details>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=kotlin,java,androidstudio,react,nextjs,ts,nodejs,express,python,php,postgres,mysql,redis,docker,aws,git,github,vite,threejs&perline=10&theme=dark" alt="Kotlin, Java, Android, React, Next.js, TypeScript, Node.js, Express, Python, PHP, PostgreSQL, MySQL, Redis, Docker, AWS, Git, GitHub, Vite, and Three.js" />
+  <img src="https://skillicons.dev/icons?i=kotlin,java,androidstudio,flutter,html,css,js,react,nextjs,ts,nodejs,express,python,php,postgres,mysql,redis,docker,aws,git,github,vite,threejs&perline=10&theme=dark" alt="Kotlin, Java, Android Studio, Flutter, HTML, CSS, JavaScript, React, Next.js, TypeScript, Node.js, Express, Python, PHP, PostgreSQL, MySQL, Redis, Docker, AWS, Git, GitHub, Vite, and Three.js" />
+  <br />
+  <img src="https://img.shields.io/badge/cPanel-F37623?style=flat-square&logo=cpanel&logoColor=white" alt="cPanel" />
+  <img src="https://img.shields.io/badge/Hostinger-673DE6?style=flat-square&logo=hostinger&logoColor=white" alt="Hostinger" />
 </p>
 
 ## 🌟 Main Quests · Featured Builds
@@ -82,6 +85,18 @@
       <p>A browser-native 3D concert experience that reacts to audio, built with Three.js and part of the AyraVerse universe.</p>
       <p><b>Stack:</b> Three.js · Web Audio · browser graphics</p>
       <a href="https://prismatic.ayraverse.com">Enter Prismatic Arena ↗</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" valign="top">
+      <h3>🪄 Arcvelt · AI Coding-Agent Command Center</h3>
+      <a href="https://arcvelt.com"><img src="assets/projects/arcvelt-hero-desktop.webp" alt="Arcvelt command center for AI coding agents" width="100%" /></a>
+      <p>A Windows desktop workspace for running Claude Code, Codex, and other CLI agents side by side. It tracks usage and keeps sessions moving when account limits hit.</p>
+      <p><b>Highlights:</b> quota-aware account switching · conversation handoff · wait and resume at reset · embedded terminals · editor, source control, browser, token saver · Android phone remote.</p>
+      <p><b>Stack:</b> Tauri 2 · Rust · React · TypeScript · Vite · Tailwind CSS · SQLite · Flutter</p>
+      <a href="https://arcvelt.com">Explore Arcvelt</a> · <a href="https://arcvelt.com/get-app">Android companion</a>
+      <br /><br />
+      <img src="assets/projects/arcvelt-hero-mobile.webp" alt="Arcvelt website on mobile" width="180" />
     </td>
   </tr>
 </table>
@@ -179,7 +194,7 @@ Got a product idea, a tricky Android problem, or an AI companion concept? I’m 
 <p align="center">
   <a href="mailto:developerravi8@gmail.com"><img src="https://img.shields.io/badge/START_A_PROJECT-Email_Ravi-EC4899?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Ravi about a project" /></a>
   <a href="https://x.com/DevRaviK"><img src="https://img.shields.io/badge/FIND_ME-@DevRaviK-111827?style=for-the-badge&logo=x&logoColor=white" alt="Ravi on X" /></a>
-  <a href="https://ravikushwaha.dev"><img src="https://img.shields.io/badge/PORTFOLIO-ravikushwaha.dev-7C3AED?style=for-the-badge&logo=vercel&logoColor=white" alt="Ravi's portfolio" /></a>
+  <a href="https://portfolio.ayraverse.com/"><img src="https://img.shields.io/badge/PORTFOLIO-portfolio.ayraverse.com-7C3AED?style=for-the-badge&logo=vercel&logoColor=white" alt="Ravi's portfolio" /></a>
 </p>
 
 <div align="center">
