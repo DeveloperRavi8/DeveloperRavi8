@@ -16,18 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Checkout the profile repository
+        uses: actions/checkout@v4
+
       - name: Generate contribution activity charts
-        uses: dturovskiy/deus-commit-chart@v1.5.3
-        with:
-          source: github
-          username: ${{ github.repository_owner }}
-          token: ${{ github.token }}
-          default-days: '365'
-          ranges: '30,90,365'
-          theme: github-compact
-          layout: spacious
-          hide-border: true
-          output-dir: dist/activity
+        run: node scripts/generate-activity-chart.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 
       - name: Generate the contribution snake
         uses: Platane/snk@v3
