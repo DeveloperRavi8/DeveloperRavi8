@@ -30,61 +30,86 @@ const query = `
   }
 `;
 
-const response = await fetch('https://api.github.com/graphql', {
-  method: 'POST',
-  headers: {
-    Authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-    'User-Agent': 'developer-ravi8-profile-activity-chart',
-  },
-  body: JSON.stringify({
-    query,
-    variables: {
-      login: username,
-      from: new Date(endMs - 365 * DAY_MS).toISOString(),
-      to: new Date(endMs + 2 * DAY_MS).toISOString(),
+async function fetchCalendarCounts(fromMs, toMs) {
+  const response = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'developer-ravi8-profile-activity-chart',
     },
-  }),
-});
+    body: JSON.stringify({
+      query,
+      variables: {
+        login: username,
+        from: new Date(fromMs).toISOString(),
+        to: new Date(toMs).toISOString(),
+      },
+    }),
+  });
 
-if (!response.ok) {
-  throw new Error(`GitHub GraphQL request failed with HTTP ${response.status}.`);
-}
-
-const payload = await response.json();
-if (payload.errors?.length) {
-  throw new Error(`GitHub GraphQL returned an error: ${payload.errors[0].message}`);
-}
-
-const calendar = payload.data?.user?.contributionsCollection?.contributionCalendar;
-if (!calendar?.weeks) {
-  throw new Error(`No contribution calendar was returned for ${username}.`);
-}
-
-const countsByDate = new Map();
-for (const week of calendar.weeks) {
-  for (const day of week.contributionDays ?? []) {
-    const count = day.contributionCount;
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(day.date) || !Number.isSafeInteger(count) || count < 0) {
-      throw new Error('GitHub returned an invalid contribution day.');
-    }
-    const existing = countsByDate.get(day.date);
-    if (existing !== undefined && existing !== count) {
-      throw new Error(`GitHub returned conflicting contribution counts for ${day.date}.`);
-    }
-    countsByDate.set(day.date, count);
+  if (!response.ok) {
+    throw new Error(`GitHub GraphQL request failed with HTTP ${response.status}.`);
   }
+
+  const payload = await response.json();
+  if (payload.errors?.length) {
+    throw new Error(`GitHub GraphQL returned an error: ${payload.errors[0].message}`);
+  }
+
+  const calendar = payload.data?.user?.contributionsCollection?.contributionCalendar;
+  if (!calendar?.weeks) {
+    throw new Error(`No contribution calendar was returned for ${username}.`);
+  }
+
+  const counts = new Map();
+  for (const week of calendar.weeks) {
+    for (const day of week.contributionDays ?? []) {
+      const count = day.contributionCount;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(day.date) || !Number.isSafeInteger(count) || count < 0) {
+        throw new Error('GitHub returned an invalid contribution day.');
+      }
+      const existing = counts.get(day.date);
+      if (existing !== undefined && existing !== count) {
+        throw new Error(`GitHub returned conflicting contribution counts for ${day.date}.`);
+      }
+      counts.set(day.date, count);
+    }
+  }
+  return counts;
 }
 
-const allDays = [];
+const countsByDate = await fetchCalendarCounts(endMs - 365 * DAY_MS, endMs + 2 * DAY_MS);
+const targetDates = [];
 for (let dayMs = endMs - 364 * DAY_MS; dayMs <= endMs; dayMs += DAY_MS) {
-  const date = new Date(dayMs).toISOString().slice(0, 10);
-  const count = countsByDate.get(date);
-  if (count === undefined) {
-    throw new Error(`GitHub's calendar did not include ${date}.`);
-  }
-  allDays.push({ date, count });
+  targetDates.push(new Date(dayMs).toISOString().slice(0, 10));
 }
+
+const missingDates = targetDates.filter((date) => !countsByDate.has(date));
+if (missingDates.length) {
+  const firstMissingMs = Date.parse(`${missingDates[0]}T00:00:00.000Z`);
+  const lastMissingMs = Date.parse(`${missingDates.at(-1)}T00:00:00.000Z`);
+  if (lastMissingMs - firstMissingMs > 28 * DAY_MS) {
+    throw new Error(`GitHub's calendar omitted a range of days beginning ${missingDates[0]}.`);
+  }
+
+  // Long GitHub calendars can omit their first partial week. Query only the
+  // missing boundary dates; the long-range response remains authoritative for
+  // every overlapping day, which avoids conflicting counts between windows.
+  const boundaryCounts = await fetchCalendarCounts(
+    firstMissingMs - 14 * DAY_MS,
+    lastMissingMs + 14 * DAY_MS,
+  );
+  for (const date of missingDates) {
+    const count = boundaryCounts.get(date);
+    if (count === undefined) {
+      throw new Error(`GitHub's calendar did not include ${date}.`);
+    }
+    countsByDate.set(date, count);
+  }
+}
+
+const allDays = targetDates.map((date) => ({ date, count: countsByDate.get(date) }));
 
 const width = 1120;
 const height = 340;
